@@ -56,20 +56,20 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints=""
         android:backgroundTint="#84EA0B"
         android:backgroundTintMode="add"
         android:ems="10"
         android:hapticFeedbackEnabled="true"
         android:inputType="textPersonName"
-        android:text="@string/senha"
+        android:text="@string/digite_sua_senha"
         android:textColor="#757575"
         android:textSize="22sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        tools:visibility="visible"
-        android:autofillHints="" />
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/button"

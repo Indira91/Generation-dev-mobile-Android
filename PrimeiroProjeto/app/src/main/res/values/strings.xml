@@ -9,4 +9,5 @@
     <string name="senha">Senha</string>
     <string name="log_in">Log in</string>
     <string name="sign_in">Sign in</string>
+    <string name="digite_sua_senha">Digite sua senha</string>
 </resources>
