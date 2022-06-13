@@ -27,7 +27,7 @@ class FormFragment : Fragment() {
         binding = FragmentFormBinding.inflate(layoutInflater, container, false
         )
 
-        mainViewModel.myCategoriaResponse.observe(viewLifecycleOwner){
+        mainViewModel.myCotegoriaResponse.observe(viewLifecycleOwner){
             Log.d("Requisicao", it.body().toString())
         }
 
