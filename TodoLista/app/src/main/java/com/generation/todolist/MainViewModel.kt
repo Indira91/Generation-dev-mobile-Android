@@ -19,13 +19,14 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _myCategoriaResponse =
+
        MutableLiveData<Response<List<Categoria>>>()
 
-    val myCotegoriaResponse: LiveData<Response<List<Categoria>>> =
+    val myCategoriaResponse: LiveData<Response<List<Categoria>>> =
         _myCategoriaResponse
 
     init{
-        listCategoria()
+        //listCategoria()
     }
 
     fun listCategoria(){
