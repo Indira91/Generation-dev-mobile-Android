@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.generation.todolist.api.Repository
 import com.generation.todolist.model.Categoria
+import com.generation.todolist.model.Tarefa
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.time.LocalDate
@@ -41,5 +43,15 @@ class MainViewModel @Inject constructor(
                 Log.d("Erro", e.message.toString())
             }
         }
+    }
+
+    fun addTarefa(tarefa: Tarefa){
+        viewModelScope.launch {
+            try {
+                repository.addTarefa((tarefa))
+        }catch (e: Exception){
+            Log.d("Erro", e.message.toString())
+
+            }        }
     }
 }
