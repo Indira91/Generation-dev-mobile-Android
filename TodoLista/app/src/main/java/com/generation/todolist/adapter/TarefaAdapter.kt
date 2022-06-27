@@ -1,5 +1,7 @@
 package com.generation.todolist.adapter
 
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 
 import android.view.ViewGroup
@@ -10,7 +12,8 @@ import com.generation.todolist.model.Tarefa
 
 class TarefaAdapter(
     val taskClickListener: TaskClickListener,
-    val mainViewModel: MainViewModel
+    val mainViewModel: MainViewModel,
+    val context: Context
 ) : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
 
    private var listTarefa = emptyList<Tarefa>()
@@ -33,14 +36,18 @@ class TarefaAdapter(
         holder.binding.textCategoria.text = tarefa.categoria.descricao
 
 
-        holder.itemView.setOnClickListener{
+        holder.binding.buttonEditar.setOnClickListener{
             taskClickListener.onTaskClickListener(tarefa)
         }
+
         holder.binding.switchAtivado
             .setOnCheckedChangeListener{compoundButton, ativo ->
                 tarefa.status = ativo
                 mainViewModel.updateTarefa(tarefa)
             }
+        holder.binding.buttonDeletar.setOnClickListener{
+            showAlertDialog(tarefa.id)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -50,6 +57,18 @@ class TarefaAdapter(
     fun setList(list: List<Tarefa>){
         listTarefa = list.sortedByDescending { it.id }
         notifyDataSetChanged()
+    }
+
+    private fun showAlertDialog(id: Long){
+        AlertDialog.Builder(context)
+            .setTitle("Excluir tarefa")
+            .setMessage("Deseja excluir tarefa?")
+            .setPositiveButton("Sim"){
+                _,_ ->mainViewModel.deleteTarefa(id)
+            }
+            .setNegativeButton("Não"){
+                _,_ ->
+            }.show()
     }
 
 }
